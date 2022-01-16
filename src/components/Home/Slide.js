@@ -23,7 +23,7 @@ const responsive = {
     }
 };
 
-const Slide = () => {
+const Slide = ({ timer, title }) => {
 
     const timerURL = 'https://static-assets-web.flixcart.com/www/linchpin/fk-cp-zion/img/timer_a73398.svg';
     const renderer = ({ hours, minutes, seconds }) => {
@@ -32,12 +32,22 @@ const Slide = () => {
     return (
         <Box style={{ marginTop: 12, background: '#FFFFFF' }}>
             <Box style={{ display: 'flex', padding: '15px 20px' }}>
-                <Typography style={{ fontSize: 22, fontWeight: 600, lineHeight: '32px', marginRight: 25 }}>Deal of the day</Typography>
-                <Box style={{ color: '#7f7f7f', marginLeft: 10, display: 'flex', alignItems: 'center' }}>
-                    <img src={timerURL} alt="" style={{ width: 24 }} />
-                    <Countdown date={Date.now() + 5.04e+7} renderer={renderer} />
-                </Box>
+                <Typography style={{ fontSize: 22, fontWeight: 600, lineHeight: '32px', marginRight: 25 }}>{title}</Typography>
+
+
+                {timer &&
+                    <Box style={{ color: '#7f7f7f', marginLeft: 10, display: 'flex', alignItems: 'center' }}>
+
+                        <img src={timerURL} alt="" style={{ width: 24 }} />
+                        <Countdown date={Date.now() + 5.04e+7} renderer={renderer} />
+
+                    </Box>
+                }
+
                 <Button variant="contained" color="primary" style={{ marginLeft: 'auto', backgroundColor: '#2874f0', borderRadius: 2, fontSize: 13 }}>View All</Button>
+
+
+
             </Box>
             <Divider />
             <Carousel swipeable={false}
