@@ -3,7 +3,8 @@ import React from 'react';
 import Countdown from 'react-countdown';
 import Carousel from "react-multi-carousel";
 import "react-multi-carousel/lib/styles.css";
-import { products } from '../../constants/Data';
+import { Link } from 'react-router-dom';
+// import { products } from '../../constants/Data';
 
 const responsive = {
     desktop: {
@@ -23,7 +24,7 @@ const responsive = {
     }
 };
 
-const Slide = ({ timer, title }) => {
+const Slide = ({ timer, title, products }) => {
 
     const timerURL = 'https://static-assets-web.flixcart.com/www/linchpin/fk-cp-zion/img/timer_a73398.svg';
     const renderer = ({ hours, minutes, seconds }) => {
@@ -68,14 +69,16 @@ const Slide = ({ timer, title }) => {
 
                 {
                     products.map(product => (
-                        <Box textAlign="center" style={{ padding: '35px 15px' }}>
-                            <img src={product.url} alt="" style={{ width: 'auto', height: 150 }} />
+                        <Link to={`product/${product.id}`}>
+                            <Box textAlign="center" style={{ padding: '35px 15px' }}>
+                                <img src={product.url} alt="" style={{ width: 'auto', height: 150 }} />
 
-                            <Typography style={{ fontSize: 14, marginTop: 5, fontWeight: 600, color: '#212121' }}>{product.title.shortTitle}</Typography>
-                            <Typography style={{ fontSize: 14, marginTop: 5, color: 'green' }}>{product.discount}</Typography>
-                            <Typography style={{ fontSize: 14, marginTop: 5, color: '#212121', opacity: '.6' }}>{product.tagline}</Typography>
+                                <Typography style={{ fontSize: 14, marginTop: 5, fontWeight: 600, color: '#212121' }}>{product.title.shortTitle}</Typography>
+                                <Typography style={{ fontSize: 14, marginTop: 5, color: 'green' }}>{product.discount}</Typography>
+                                <Typography style={{ fontSize: 14, marginTop: 5, color: '#212121', opacity: '.6' }}>{product.tagline}</Typography>
 
-                        </Box>
+                            </Box>
+                        </Link>
                     ))
                 }
 

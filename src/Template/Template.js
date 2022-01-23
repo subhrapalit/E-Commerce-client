@@ -24,7 +24,7 @@ export const Template = ({ children }) => {
             },
             MuiTableCell: {
                 root: {
-                    borderBottom: 0
+                    borderBottom: 'none'
                 }
             }
         }
